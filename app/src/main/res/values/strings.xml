@@ -5,4 +5,12 @@
     <string name="email">Email:</string>
     <string name="password">Password:</string>
     <string name="re_enter_password">Re-Enter Password:</string>
+    <string name="license_agreement">By accepting this license, you are accepting all the permissions required by this app and you are agreeing to sell your kidney.</string>
+    <string name="agree_license">I Totally Agree</string>
+    <string name="gender">Gender:</string>
+    <string name="radio_male">Male</string>
+    <string name="radio_female">Female</string>
+    <string name="radio_others">Others</string>
+    <string name="radio_gunship">Gunship</string>
+    <string name="register">REGISTER</string>
 </resources>
