@@ -13,4 +13,5 @@
     <string name="radio_others">Others</string>
     <string name="radio_gunship">Gunship</string>
     <string name="register">REGISTER</string>
+    <string name="country">Country:</string>
 </resources>
