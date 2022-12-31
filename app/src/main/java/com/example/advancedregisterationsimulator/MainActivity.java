@@ -1,9 +1,11 @@
 package com.example.advancedregisterationsimulator;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup genderGroup;
     private Button registerButton;
     private Spinner countrySpinner;
+    private AlertDialog.Builder builder;
+    private AlertDialog alertDialog;
 
 
 
@@ -59,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         registerButton = findViewById(R.id.registerButton);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NonConstantResourceId")
             @Override
             public void onClick(View v) {
                 if (userName.getText().toString().isEmpty()) {
@@ -128,32 +133,98 @@ public class MainActivity extends AppCompatActivity {
                     int ID = genderGroup.getCheckedRadioButtonId();
                     switch (ID) {
                         case R.id.radioMale:
-
+                            builder.setMessage("Please confirm your information:\nName: "
+                                    + userName.getText().toString()
+                                    + "\nEmail: " + userEmail.getText().toString()
+                                    + "\nGender: Male"
+                                    + "\nGender: " + countrySpinner.getSelectedItem().toString());
+                            builder.setTitle("Confirmation");
+                            builder.setCancelable(false);
+                            builder.setPositiveButton("Confirmed", (dialog, which) -> {
+                                Snackbar.make(parent, "Congratulations!\nYou have registered successfully", Snackbar.LENGTH_INDEFINITE)
+                                        .setAction("OK", new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                return;
+                                            }
+                                        }).show();
+                            });
+                            builder.setNegativeButton("Retry", (dialog, which) -> {
+                                Toast.makeText(MainActivity.this, "Go to change what you want", Toast.LENGTH_SHORT).show();
+                            });
+                            alertDialog = builder.create();
+                            alertDialog.show();
+                            break;
+                        case R.id.radioFemale:
+                            builder.setMessage("Please confirm your information:\nName: "
+                                    + userName.getText().toString()
+                                    + "\nEmail: " + userEmail.getText().toString()
+                                    + "\nGender: Female"
+                                    + "\nGender: " + countrySpinner.getSelectedItem().toString());
+                            builder.setTitle("Confirmation");
+                            builder.setCancelable(false);
+                            builder.setPositiveButton("Confirmed", (dialog, which) -> {
+                                Snackbar.make(parent, "Congratulations!\nYou have registered successfully", Snackbar.LENGTH_INDEFINITE)
+                                        .setAction("OK", new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                return;
+                                            }
+                                        }).show();
+                            });
+                            builder.setNegativeButton("Retry", (dialog, which) -> {
+                                Toast.makeText(MainActivity.this, "Go to change what you want", Toast.LENGTH_SHORT).show();
+                            });
+                            alertDialog = builder.create();
+                            alertDialog.show();
+                            break;
+                        case R.id.radioOthers:
+                            builder.setMessage("Please confirm your information:\nName: "
+                                    + userName.getText().toString()
+                                    + "\nEmail: " + userEmail.getText().toString()
+                                    + "\nGender: Others"
+                                    + "\nGender: " + countrySpinner.getSelectedItem().toString());
+                            builder.setTitle("Confirmation");
+                            builder.setCancelable(false);
+                            builder.setPositiveButton("Confirmed", (dialog, which) -> {
+                                Snackbar.make(parent, "Congratulations!\nYou have registered successfully", Snackbar.LENGTH_INDEFINITE)
+                                        .setAction("OK", new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                return;
+                                            }
+                                        }).show();
+                            });
+                            builder.setNegativeButton("Retry", (dialog, which) -> {
+                                Toast.makeText(MainActivity.this, "Go to change what you want", Toast.LENGTH_SHORT).show();
+                            });
+                            alertDialog = builder.create();
+                            alertDialog.show();
+                            break;
+                        case R.id.radioGunship:
+                            builder.setMessage("Please confirm your information:\nName: "
+                                    + userName.getText().toString()
+                                    + "\nEmail: " + userEmail.getText().toString()
+                                    + "\nGender: Gunship"
+                                    + "\nGender: " + countrySpinner.getSelectedItem().toString());
+                            builder.setTitle("Confirmation");
+                            builder.setCancelable(false);
+                            builder.setPositiveButton("Confirmed", (dialog, which) -> {
+                                Snackbar.make(parent, "Congratulations!\nYou have registered successfully", Snackbar.LENGTH_INDEFINITE)
+                                        .setAction("OK", new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                return;
+                                            }
+                                        }).show();
+                            });
+                            builder.setNegativeButton("Retry", (dialog, which) -> {
+                                Toast.makeText(MainActivity.this, "Go to change what you want", Toast.LENGTH_SHORT).show();
+                            });
+                            alertDialog = builder.create();
+                            alertDialog.show();
+                            break;
                     }
-//                    Snackbar.make(parent, "Please confirm your information: "
-//                                    + userName.getText().toString()
-//                            + ", " + userEmail.getText().toString()
-//                            + ", " + selectedGender
-//                            + "," + countrySpinner.getSelectedItem().toString(),
-//                            Snackbar.LENGTH_INDEFINITE)
-//                            .setAction("Confirm", new View.OnClickListener() {
-//                                @Override
-//                                public void onClick(View v) {
-//                                    Snackbar.make(parent, "Congratulations! You have registered successfully.", Snackbar.LENGTH_INDEFINITE)
-//                                            .setAction("OK", new View.OnClickListener() {
-//                                                @Override
-//                                                public void onClick(View v) {
-//                                                    return;
-//                                                }
-//                                            }).show();
-//                                }
-//                            })
-//                            .setAction("Retry", new View.OnClickListener() {
-//                                @Override
-//                                public void onClick(View v) {
-//                                    Toast.makeText(MainActivity.this, "Go to change what you want", Toast.LENGTH_SHORT).show();
-//                                }
-//                            }).show();
                 }
             }
         });
@@ -181,11 +252,14 @@ public class MainActivity extends AppCompatActivity {
         countrySpinner.setAdapter(countriesAdapter);
 
 
+        builder = new AlertDialog.Builder(MainActivity.this);
+
+
 
         uselessButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(parent, "Picture already selected", Snackbar.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Picture already selected", Toast.LENGTH_SHORT).show();
             }
         });
     }
